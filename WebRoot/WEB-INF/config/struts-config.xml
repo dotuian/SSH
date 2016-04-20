@@ -70,15 +70,15 @@
 				validate="true"
 				parameter="command" >
 			<!--  用户列表页面  -->
-			<forward name="userlist" path="/WEB-INF/jsp/user/list.jsp" />
+			<forward name="userlist" path="page.user.list" />
 			<!--  用户详细页面  -->
-			<forward name="userdetail" path="/WEB-INF/jsp/user/detail.jsp" />
+			<forward name="userdetail" path="page.user.detail" />
 			<!--  用户更新页面  -->
-			<forward name="updateuser" path="/WEB-INF/jsp/user/update.jsp" />
+			<forward name="updateuser" path="page.user.update" />
 			<!--  用户更新确认页面  -->
-			<forward name="confirmuser" path="/WEB-INF/jsp/user/confirm.jsp" />
+			<forward name="confirmuser" path="page.user.confirm" />
 			<!--  用户更新确认页面  -->
-			<forward name="createuser" path="/WEB-INF/jsp/user/create.jsp" />
+			<forward name="createuser" path="page.user.create" />
 			<!--  执行用户更新操作  -->
 			<forward name="update" path="/user.do" redirect="true" />
 			<!--  用户删除  -->
@@ -87,7 +87,7 @@
 			<forward name="index" path="/user.do" redirect="true" />
 		</action>
 		
-		
+
 		<action path="/item"
 				type="org.springframework.web.struts.DelegatingActionProxy" 
 				name="itemForm"

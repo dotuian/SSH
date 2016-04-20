@@ -2,35 +2,34 @@
 
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-tiles" prefix="tiles" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 	<head>
+		<link rel="icon" href="http://getbootstrap.com/favicon.ico">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		
-		<link href="<%=request.getContextPath() %>/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-		<link href="<%=request.getContextPath() %>/css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
-		<script src="<%=request.getContextPath() %>/js/bootstrap.js" type="text/script"></script>
+	    <title>SSH Framework</title>
+		
+		<link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<link href="<%=request.getContextPath() %>/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+		
+		<link href="<%=request.getContextPath() %>/css/style.css" rel="stylesheet" type="text/css"/>
 		
 <%-- 		<title><tiles:getAsString name="title"/></title> --%>
 	</head>
 
-	<body>
-		<table width="100%" height="100%" border="0">
-			<tr>
-				<td valign="top" height="10px">
-					<tiles:insert name="header" attribute="header" />
-				</td>
-			</tr>
-			<tr>
-				<td valign="middle" align="center">
-					<tiles:insert name="body" attribute="body" />
-				</td>
-			</tr>
-			<tr>
-				<td height="10px">
-					<tiles:insert name="footer" attribute="footer" />
-				</td>
-			</tr>
-		</table>
+	<body role="document">
+		
+		<tiles:insert name="header" attribute="header" />
+		
+	    <div class="container" role="main">
+			<tiles:insert name="body" attribute="body" />
+		</div>
+	
+		<tiles:insert name="footer" attribute="footer" />
+		
+		
+		<script src="<%=request.getContextPath() %>/js/jquery.min.js" type="text/script"></script>
+		<script src="<%=request.getContextPath() %>/js/bootstrap.min.js" type="text/script"></script>
 	</body>
 </html>

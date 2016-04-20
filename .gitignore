@@ -3,7 +3,7 @@
 bin/
 
 # ignore all target directories
-target/
+target/git a
 
 # ignore all files ending with ~
 *~ 

@@ -16,23 +16,23 @@
     </definition>
 	
     <definition name="page.user.list" extends="layout">
-        <put name="body"          value="/WEB-INF/jsp/list.jsp" />
+        <put name="body"          value="/WEB-INF/jsp/user/list.jsp" />
     </definition>
 	
     <definition name="page.user.detail" extends="layout">
-        <put name="body"          value="/WEB-INF/jsp/detail.jsp" />
+        <put name="body"          value="/WEB-INF/jsp/user/detail.jsp" />
     </definition>
 	
     <definition name="page.user.update" extends="layout">
-        <put name="body"          value="/WEB-INF/jsp/update.jsp" />
+        <put name="body"          value="/WEB-INF/jsp/user/update.jsp" />
     </definition>
 	
     <definition name="page.user.confirm" extends="layout">
-        <put name="body"          value="/WEB-INF/jsp/confirm.jsp" />
+        <put name="body"          value="/WEB-INF/jsp/user/confirm.jsp" />
     </definition>
 	
     <definition name="page.user.create" extends="layout">
-        <put name="body"          value="/WEB-INF/jsp/create.jsp" />
+        <put name="body"          value="/WEB-INF/jsp/user/create.jsp" />
     </definition>
 	
 	
