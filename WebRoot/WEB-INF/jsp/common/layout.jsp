@@ -29,7 +29,8 @@
 		<tiles:insert name="footer" attribute="footer" />
 		
 		
-		<script src="<%=request.getContextPath() %>/js/jquery.min.js" type="text/script"></script>
-		<script src="<%=request.getContextPath() %>/js/bootstrap.min.js" type="text/script"></script>
+		<script src="<%=request.getContextPath() %>/js/jquery.min.js" ></script>
+		<script src="<%=request.getContextPath() %>/js/bootstrap.min.js" ></script>
+		
 	</body>
 </html>
