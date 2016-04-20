@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="loginForm" type="com.dotuian.drp.web.forms.LoginForm" />
+		<form-bean name="itemForm" type="com.dotuian.drp.web.forms.ItemForm" />
+		
+		<form-bean name="userForm" type="com.dotuian.drp.web.forms.UserForm" />
+	</form-beans>
+
+	<global-exceptions>
+		<exception key="errors.detail" type="com.dotuian.drp.AppException"
+			path="/WEB-INF/jsp/common/error.jsp" />
+	</global-exceptions>
+
+	<global-forwards>
+<!-- 		<forward name="index" path="/index.jsp" redirect="true" /> -->
+	</global-forwards>
+
+	<action-mappings>
+		
+		<!--
+		    名称：action
+		    描述：定义了从特定的请求路径到相应的Action类的映射
+		    数量：任意多个
+		    子元素：exception,forward（二者均为局部量）
+		    属性：
+		     @attribute:制定与当前Action相关联的ActionForm Bean在request和session范围内的名称（key）
+		     @className:与Action元素对应的配置类。默认为org.apache.struts.action.ActionMapping
+		     @forward:指名转发的URL路径
+		     @include:指名包含的URL路径
+		     @input:指名包含输入表单的URL路径，表单验证失败时，请求会被转发到该URL中
+		     @name:指定和当前Acion关联的ActionForm Bean的名字。该名称必须在form-bean元素中定义过。
+		     @path:指定访问Action的路径，以"/"开头，没有扩展名
+		     @parameter:为当前的Action配置参数，可以在Action的execute()方法中，通过调用ActionMapping的getParameter()方法来获取参数
+		     @roles:指定允许调用该Aciton的安全角色。多个角色之间用逗号分割。处理请求时，RequestProcessor会根据该配置项来决定用户是否有调用该Action的权限
+		     @scope:指定ActionForm Bean的存在范围，可选值为request和session。默认为session
+		     @type:指定Action类的完整类名
+		     @unknown:值为true时，表示可以处理用户发出的所有无效的Action URL。默认为false
+		     @validate:指定是否要先调用ActionForm Bean的validate()方法。默认为true
+		    注意：如上属性中，forward/include/type三者相斥，即三者在同一Action配置中只能存在一个。
+   		-->
+		
+		<!-- 跳转到登录画面 -->
+   		<action path="/index"  
+   				scope="request" 
+   				type="com.dotuian.drp.web.actions.IndexAction" 
+   				validate="true">
+<!--    			<forward name="index" path="/WEB-INF/jsp/common/login.jsp" /> -->
+   			<forward name="index" path="page.login" />
+   		</action>
+
+		<!-- 登录画面 -->
+		<action path="/login" 
+				type="com.dotuian.drp.web.actions.LoginAction"
+				name="loginForm" 
+				scope="request"
+				validate="true">
+			<forward name="success" path="/user.do" redirect="true" />
+		</action>
+
+		<!-- 用户列表-->
+		<action path="/user" 
+				type="org.springframework.web.struts.DelegatingActionProxy"
+				name="userForm" 
+				scope="request"
+				validate="true"
+				parameter="command" >
+			<!--  用户列表页面  -->
+			<forward name="userlist" path="/WEB-INF/jsp/user/list.jsp" />
+			<!--  用户详细页面  -->
+			<forward name="userdetail" path="/WEB-INF/jsp/user/detail.jsp" />
+			<!--  用户更新页面  -->
+			<forward name="updateuser" path="/WEB-INF/jsp/user/update.jsp" />
+			<!--  用户更新确认页面  -->
+			<forward name="confirmuser" path="/WEB-INF/jsp/user/confirm.jsp" />
+			<!--  用户更新确认页面  -->
+			<forward name="createuser" path="/WEB-INF/jsp/user/create.jsp" />
+			<!--  执行用户更新操作  -->
+			<forward name="update" path="/user.do" redirect="true" />
+			<!--  用户删除  -->
+			<forward name="deleteuser" path="/user.do" redirect="true" />
+			<!--  操作完成后的页面的跳转 -->
+			<forward name="index" path="/user.do" redirect="true" />
+		</action>
+		
+		
+		<action path="/item"
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				name="itemForm"
+				scope="request" 
+				parameter="command">
+			<forward name="list" path="/WEB-INF/jsp/item_maint.jsp" />
+			<forward name="show_add" path="/WEB-INF/jsp/item_add.jsp" />
+			<forward name="item_index" path="/item.do" redirect="true" />
+			<forward name="show_modify" path="/WEB-INF/jsp/item_modify.jsp" />
+			<forward name="show_detail" path="/WEB-INF/jsp/item_detail.jsp" />
+			<forward name="show_upload" path="/WEB-INF/jsp/item_upload.jsp" />
+		</action>
+	</action-mappings>
+
+	<message-resources parameter="MessageResources" />
+	
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+	    <set-property property="definitions-config" value="/WEB-INF/config/tiles-definitions.xml" />
+	    <set-property property="moduleAware" value="true" />
+	</plug-in>
+
+</struts-config>
