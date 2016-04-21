@@ -30,7 +30,7 @@
 	
 	<!-- 那些类那些方法使用事务 -->
 	<aop:config>
-		<aop:pointcut id="allManagerMethod" expression="execution(* com.dotuian.drp.service.*.*(..))"/>
+		<aop:pointcut id="allManagerMethod" expression="execution(* com.dotuian.ssh.service.*.*(..))"/>
 		<aop:advisor pointcut-ref="allManagerMethod" advice-ref="txAdvice"/>
 	</aop:config>
 	

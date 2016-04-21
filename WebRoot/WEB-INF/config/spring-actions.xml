@@ -8,9 +8,8 @@
            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
 	
 
-	<bean name="/user" class="com.dotuian.drp.web.actions.UserAction" scope="prototype">
+	<bean name="/user" class="com.dotuian.ssh.web.actions.UserAction" scope="prototype">
 		<property name="userService" ref="userService"/>
 	</bean>
 	
-
 </beans>

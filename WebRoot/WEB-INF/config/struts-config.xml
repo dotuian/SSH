@@ -5,23 +5,23 @@
 
 <struts-config>
 	<form-beans>
-		<form-bean name="loginForm" type="com.dotuian.drp.web.forms.LoginForm" />
-		<form-bean name="itemForm" type="com.dotuian.drp.web.forms.ItemForm" />
-		
-		<form-bean name="userForm" type="com.dotuian.drp.web.forms.UserForm" />
+        <!-- 所有的Form，都必须在这里进行配置 -->
+		<form-bean name="loginForm" type="com.dotuian.ssh.web.forms.LoginForm" />
+		<form-bean name="userForm" type="com.dotuian.ssh.web.forms.UserForm" />
 	</form-beans>
-
+    
+    <!-- 出现异常时，跳转的页面定义 -->
 	<global-exceptions>
-		<exception key="errors.detail" type="com.dotuian.drp.AppException"
-			path="/WEB-INF/jsp/common/error.jsp" />
+		<exception key="errors.detail" type="com.dotuian.ssh.AppException" path="/WEB-INF/jsp/common/error.jsp" />
 	</global-exceptions>
 
 	<global-forwards>
 <!-- 		<forward name="index" path="/index.jsp" redirect="true" /> -->
 	</global-forwards>
 
+
+    <!-- 所有 -->
 	<action-mappings>
-		
 		<!--
 		    名称：action
 		    描述：定义了从特定的请求路径到相应的Action类的映射
@@ -44,21 +44,22 @@
 		    注意：如上属性中，forward/include/type三者相斥，即三者在同一Action配置中只能存在一个。
    		-->
 		
-		<!-- 跳转到登录画面 -->
-   		<action path="/index"  
-   				scope="request" 
-   				type="com.dotuian.drp.web.actions.IndexAction" 
-   				validate="true">
-   			<forward name="index" path="page.login" />
-   		</action>
-
 		<!-- 登录画面 -->
 		<action path="/login" 
-				type="com.dotuian.drp.web.actions.LoginAction"
+				type="com.dotuian.ssh.web.actions.LoginAction"
 				name="loginForm" 
 				scope="request"
 				validate="true">
+			<forward name="login" path="page.login" />
 			<forward name="success" path="/user.do" redirect="true" />
+		</action>
+		
+		<action path="/logout" 
+				type="com.dotuian.ssh.web.actions.LogoutAction"
+				name="loginForm" 
+				scope="request"
+				validate="true">
+			<forward name="login" path="page.login" />
 		</action>
 
 		<!-- 用户列表-->
@@ -84,6 +85,8 @@
 			<forward name="deleteuser" path="/user.do" redirect="true" />
 			<!--  操作完成后的页面的跳转 -->
 			<forward name="index" path="/user.do" redirect="true" />
+			<!--  登录页面 -->
+			<forward name="login" path="/login.do" redirect="true" />
 		</action>
 		
 	</action-mappings>

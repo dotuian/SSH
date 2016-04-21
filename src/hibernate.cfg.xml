@@ -20,9 +20,7 @@
 		<!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
 
 
-		<mapping resource="com/dotuian/drp/domain/DataDict.hbm.xml" />
-		<mapping resource="com/dotuian/drp/domain/Item.hbm.xml" />
-		<mapping resource="com/dotuian/drp/domain/User.hbm.xml" />
+		<mapping resource="com/dotuian/ssh/domain/hbm/User.hbm.xml" />
 
 	</session-factory>
 </hibernate-configuration>

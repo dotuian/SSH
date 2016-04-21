@@ -7,6 +7,6 @@
 <title>主页</title>
 </head>
 <body>
-	<jsp:forward page="index.do"></jsp:forward>
+	<jsp:forward page="login.do"></jsp:forward>
 </body>
 </html>
