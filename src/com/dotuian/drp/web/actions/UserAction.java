@@ -127,7 +127,7 @@ public class UserAction extends BaseAction {
 
 		User user = this.userService.getUserById(userForm.getId());
 		request.setAttribute("user", user);
-		request.setAttribute("form", form);
+		request.setAttribute("form", userForm);
 
 		return mapping.findForward("confirmuser");
 	}

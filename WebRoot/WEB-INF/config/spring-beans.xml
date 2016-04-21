@@ -13,8 +13,6 @@
            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
 
-
-
 	<bean id="userDao" class="com.dotuian.drp.dao.imp.UserDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
@@ -24,26 +22,4 @@
 	</bean>
 
 
-	<bean id="itemDao" class="com.dotuian.drp.dao.imp.ItemDaoImp">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-	<bean id="dataDictDao" class="com.dotuian.drp.dao.imp.DataDictDaoImp">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-
-	<bean id="itemService" class="com.dotuian.drp.service.imp.ItemServiceImp">
-		<property name="itemDao" ref="itemDao" />
-	
-	</bean>
-	
-	<bean id="dataDictService" class="com.dotuian.drp.service.imp.DataDictServiceImp">
-		<property name="dataDictDao" ref="dataDictDao" />
-	</bean>
-	
-	
-	
-	
-	
-	
-	
 </beans>

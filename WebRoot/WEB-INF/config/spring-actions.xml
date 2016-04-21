@@ -13,12 +13,4 @@
 	</bean>
 	
 
-	<bean name="/item" class="com.dotuian.drp.web.actions.ItemAction" scope="prototype">
-		<property name="itemService" ref="itemService"/>
-		<property name="dataDictService" ref="dataDictService"/>
-	</bean>
-	
-	
-	
-	
 </beans>

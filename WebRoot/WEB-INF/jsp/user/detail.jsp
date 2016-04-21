@@ -1,61 +1,50 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<html>
-<head>
-<base href="<%=basePath%>">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>用户详细</title>
-<link rel="stylesheet" href="style/drp.css">
-</head>
 
-<body class="body1">
+<ul class="breadcrumb">
+    <li><a href="${path}">主页</a></li>
+    <li><a href="${path}user.do">用户</a></li>
+    <li class="active">详细</li>
+</ul>
 
-	<table width="95%" border="0" cellspacing="2" cellpadding="2">
-		<tr>
-			<td>
-				&nbsp;
-			</td>
-		</tr>
-	</table>
-	<table width="95%" border="0" cellspacing="0" cellpadding="0"
-		height="8">
-		<tr>
-			<td width="522" class="p1" height="2" nowrap>
-				<img src="images/mark_arrow_02.gif" alt="我" width="14"
-					height="14">
-				&nbsp;
-				<b><a href="<%=basePath%>user.do"> 用户</a>&gt;&gt;列表</b>
-			</td>
-		</tr>
-	</table>
 
-	<form name="userForm" target="_self" id="userForm" action="user.do" method="post">
-		<input type="hidden" name="command" value="deleteuser">
-		<input type="hidden" name="id" value="${user.id}">
-		<table width="95%" border="1" cellspacing="0" cellpadding="0" align="center" class="table1">
-			<tr>
-				<td width="155" class="rd6">用户名</td>
-				<td class="rd8">${user.username}</td>
-			</tr>
-			<tr>
-				<td width="155" class="rd6">密码</td>
-				<td class="rd8">${user.username}</td>
-			</tr>
-			<tr>
-				<td width="155" class="rd6">邮箱</td>
-				<td class="rd8">${user.email}</td>
-			</tr>
-		</table>
+<div class="row">
 
-		<input id="btnDelete" name="btnDelete" class="button" type="submit" value="删除">
-		
-		<input id="btnUpdate" name="btnUpdate" class="button" type="button" value="更新" onclick="window.location='<%=basePath%>user.do?command=updateuser&id=${user.id}'">
-	</form>
-</body>
-</html>
+	<div class="col-lg-12">
+
+		<form name="userForm" class="form-horizontal" id="userForm" action="user.do" method="post">
+			<div class="form-group">
+				<label for="username" class="col-sm-2 control-label">用户名</label>
+				<div class="col-sm-10">
+                    <input name="username" type="text" class="form-control" value="${user.username}" readonly="true" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="password" class="col-sm-2 control-label">密码</label>
+				<div class="col-sm-10">
+					<input name="password" type="text" class="form-control" value="${user.password}" readonly="true" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="email" class="col-sm-2 control-label">邮箱</label>
+				<div class="col-sm-10">
+					<input name="email" type="email" class="form-control" value="${user.email}" readonly="true" />
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+			        <input type="hidden" name="command" value="deleteuser">
+			        <input type="hidden" name="id" value="${user.id}">
+					<button id="btnDelete" name="btnDelete" type="submit" class="btn btn-danger">删除</button>
+					<button id="btnUpdate" name="btnUpdate" type="button" class="btn btn-primary" onclick="window.location='<%=basePath%>user.do?command=updateuser&id=${user.id}'">更新</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+</div>
